@@ -11,7 +11,6 @@ plugins:
 rules:
   eol-last: "off"
   semi: ["error", "never"]
-  linebreak-style: ["error", "windows"]
   class-methods-use-this: "off"
   no-confusing-arrow: "off"
   no-plusplus: "off"

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import ItemTodo from './ItemTodo'
 
 const ShowTodo = ({ todos, handleFinish, handleRemove }) => (
@@ -12,9 +12,5 @@ const ShowTodo = ({ todos, handleFinish, handleRemove }) => (
     </ul>
   </div>
 )
-
-ShowTodo.propTypes = {
-  todos: PropTypes.array
-}
 
 export default ShowTodo

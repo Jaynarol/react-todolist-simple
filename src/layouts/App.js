@@ -21,31 +21,26 @@ class App extends Component {
     ]
   }
 
-  createNewItem = text => {
+  createNewItem = ({ id, text, finish = false }) => {
     const todo = this.state.todos
-    return {
-      id: (todo[todo.length - 1] || {id:0}).id + 1,
-      text,
-      finish: false
-    }
+    const nextId = todo.length ? todo[todo.length - 1].id + 1 : 1
+    return { id: id || nextId, text, finish }
   }
 
   addTodo = text => {
-    this.setState({ todos: [...this.state.todos, this.createNewItem(text)]})
+    this.setState({ todos: [...this.state.todos, this.createNewItem({ text })] })
   }
 
   toggleFinish = id => {
-    const todo = this.state.todos
-    const index = todo.findIndex(item => item.id === id)
-    todo[index].finish = !todo[index].finish
-    this.setState({ todos: todo })
+    this.setState({
+      todos: this.state.todos.map(todo => todo.id === id ? { ...todo, finish: !todo.finish } : todo)
+    })
   }
 
   removeItem = id => {
-    const todo = this.state.todos
-    const index = todo.findIndex(item => item.id === id)
-    todo.splice(index, 1)
-    this.setState({ todos: todo })
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id !== id)
+    })
   }
 
   render() {
@@ -53,10 +48,11 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to TodoList App</h2>
+          <h4>(Powered by React)</h4>
         </div>
         <div className="App-intro">
-          <InputTodo handleTodo={this.addTodo} />
+          <InputTodo handleNewTodo={this.addTodo} />
           <ShowTodo handleFinish={this.toggleFinish} handleRemove={this.removeItem} {...this.state} />
         </div>
       </div>

@@ -1,15 +1,14 @@
 import React from 'react'
 
 const ItemTodo = ({ id, text, finish, handleFinish, handleRemove }) => {
-  const finishClass = ['item', (finish ? 'finishItem' : 'unfinishItem')].join(' ')
+  const finishClass = finish ? 'finishItem' : 'unfinishItem'
   const handleOnClickFinish = () => handleFinish(id)
   const handleOnClickRemove = () => handleRemove(id)
 
   return (
-    <li>
+    <li className="item">
       <span className={finishClass}  onClick={handleOnClickFinish}>{text}</span>
-      &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
-      <button onClick={handleOnClickRemove}>X</button>
+      <button className="deleteBtn" onClick={handleOnClickRemove}>X</button>
     </li>
   )
 }

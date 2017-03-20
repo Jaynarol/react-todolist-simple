@@ -9,7 +9,6 @@
 
 .App-header {
 	background-color: #222;
-	height: 150px;
 	padding: 20px;
 	color: white;
 }
@@ -19,7 +18,12 @@
 	width: 200px;
 	margin: 0 auto;
 	text-align: left;
-	padding-top: 50px;
+	padding-top: 30px;
+}
+
+.App-intro ul{
+	padding-top: 10px;
+	padding-left: 0;
 }
 
 @keyframes App-logo-spin {
@@ -31,15 +35,23 @@
 	}
 }
 
-.item{
+.item {
+	margin-top: 5px;
+}
+
+.item span {
 	cursor: pointer;
 }
 
-.unfinishItem{
+.unfinishItem {
 	color: blueviolet;
 }
 
-.finishItem{
+.finishItem {
 	color: gray;
 	text-decoration: line-through;
+}
+
+.deleteBtn {
+	float: right;
 }

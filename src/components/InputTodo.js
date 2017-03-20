@@ -1,17 +1,17 @@
 import React from 'react'
 
-const InputTodo = ({handleTodo}) => {
+const InputTodo = ({handleNewTodo}) => {
 
-  const onChangeHandle = event => {
-    if (event.key === 'Enter') {
-      handleTodo(event.target.value)
+  const handleKeyPress = event => {
+    if (event.key === 'Enter' && event.target.value) {
+      handleNewTodo(event.target.value)
       event.target.value = ''
     }
   }
 
   return (
     <div>
-      <input type="text" onKeyPress={onChangeHandle} />
+      <input type="text" placeholder="add your task here!" onKeyPress={handleKeyPress} />
     </div>
   )
 }
